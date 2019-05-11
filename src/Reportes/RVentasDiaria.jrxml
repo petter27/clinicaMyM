@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.4.3.final using JasperReports Library version 6.4.3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e7dff9e8-06a3-4ebd-a08a-e063b447b834">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.xml"/>
+	<parameter name="fecha1" class="java.lang.String"/>
+	<parameter name="fecha2" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT V.idVenta, CONCAT(E.nombre, ' ', E.apellido), V.venta_fecha, V.venta_total  FROM venta V
+INNER JOIN empleado E ON E.empleado_code = V.empleado_code
+WHERE V.venta_fecha >=$P{fecha1} AND V.venta_fecha <= $P{fecha2}]]>
+	</queryString>
+	<field name="idVenta" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CONCAT(E.nombre, &apos; &apos;, E.apellido)" class="java.lang.String"/>
+	<field name="venta_fecha" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="venta_total" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="176" y="10" width="206" height="39" uuid="aa4e7050-0375-4938-9123-7d2ed4a96a35"/>
+				<textElement>
+					<font fontName="Century Gothic" size="30"/>
+				</textElement>
+				<text><![CDATA[Clinica M&M]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="29" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="199" height="20" uuid="f727c236-e3f0-40d5-8291-b576115079fd"/>
+				<textElement>
+					<font fontName="Century Gothic" size="16"/>
+				</textElement>
+				<text><![CDATA[Reporte de ventas.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="362" y="2" width="100" height="20" uuid="5eea3793-6ae6-4413-992f-cd9a8c58471f"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="446" y="2" width="100" height="20" uuid="328d2296-ccf5-4d52-979b-574039f3efc0"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="305" y="2" width="57" height="20" uuid="e497e785-196b-4076-9c44-040eb32e9023"/>
+				<textElement>
+					<font fontName="Century Gothic" size="16"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="437" y="1" width="10" height="20" uuid="da416807-1be8-4736-9927-a6bf0b11f4b0"/>
+				<textElement>
+					<font fontName="Century Gothic" size="16"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="30">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="4891b5c7-90fb-46f8-ab8a-43030acb363a"/>
+				<textElement>
+					<font fontName="Century Gothic" size="16"/>
+				</textElement>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="132" y="2" width="100" height="20" uuid="ccb84ab1-99cb-4d6a-81f7-5fcd942cfd70"/>
+				<textElement>
+					<font fontName="Century Gothic" size="16"/>
+				</textElement>
+				<text><![CDATA[Vendedor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="286" y="2" width="100" height="20" uuid="e80579ff-c167-414d-974e-a0b71905de48"/>
+				<textElement>
+					<font fontName="Century Gothic" size="16"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="446" y="2" width="100" height="20" uuid="5e4b795b-4513-4773-bab6-3a2d93ff03c1"/>
+				<textElement>
+					<font fontName="Century Gothic" size="16"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="27">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="2fbbead0-a008-4b31-8b43-848870e29020"/>
+				<textElement>
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idVenta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="132" y="0" width="100" height="20" uuid="b0e1c9f3-7eaa-4a78-8f6e-8d9baa5cf786"/>
+				<textElement>
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CONCAT(E.nombre, ' ', E.apellido)}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="282" y="0" width="100" height="20" uuid="ab24e0ee-d280-4339-9e2f-45ac4ec878aa"/>
+				<textElement>
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{venta_fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="446" y="0" width="100" height="20" uuid="963a6277-ce34-49c4-b1eb-31436392cdea"/>
+				<textElement>
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{venta_total}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="32">
+			<subreport>
+				<reportElement x="56" y="0" width="464" height="32" uuid="b7ca0db6-cc2e-41df-ba82-ea1065465e29"/>
+				<subreportParameter name="codeVenta">
+					<subreportParameterExpression><![CDATA[$F{idVenta}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["C:\\Users\\Usuario\\Desktop\\SI 3.0\\Clinica M_M - System\\clinicaMyM\\src\\Reportes\\RVentasDiaria_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>
